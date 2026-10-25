@@ -2,7 +2,7 @@ package dio.budgeting.application;
 
 import dio.budgeting.domain.Transaction;
 import dio.budgeting.domain.TransactionRepository;
-import org.springframework.ai.chat.model.Tool;
+import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class DetectAnomaliesUseCase {
 
     public record AnomalyReport(int totalTransactionsAnalyzed, double meanAmount, double standardDeviation, List<Transaction> outliers) {}
 
-    @Tool("Analisa o histórico de transações e detecta gastos anômalos ou fora do padrão estatístico do usuário")
+    @Tool(name = "detectAnomalies", description = "Analisa o histórico de transações e detecta gastos anômalos ou fora do padrão estatístico do usuário")
     public AnomalyReport execute() {
         List<Transaction> transactions = repository.findAll();
         

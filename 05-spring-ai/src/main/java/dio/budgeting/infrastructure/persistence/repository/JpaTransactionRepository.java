@@ -29,4 +29,15 @@ public class JpaTransactionRepository implements TransactionRepository {
                 .map(TransactionEntity::toDomain)
                 .toList();
     }
+
+    @Override
+    public List<Transaction> findAll() {
+        List<Transaction> transactions = new java.util.ArrayList<>();
+        
+        for (TransactionEntity entity : transactionEntityRepository.findAll()) {
+            transactions.add(entity.toDomain());
+        }
+        
+        return transactions;
+    }
 }
