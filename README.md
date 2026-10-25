@@ -1,4 +1,6 @@
-# 🧠 Spring AI Budgeting - Financial Analytics Toolkit
+# 🚀 Desafio DIO / Itaú - Inteligência Artificial para Análise Financeira
+
+Este projeto foi desenvolvido como parte do desafio da DIO em parceria com o Itaú. Além da estrutura base do projeto (transcrição de áudio e listagem de transações), adicionei melhorias arquiteturais e novas ferramentas estatísticas para tornar a IA um verdadeiro conselheiro financeiro.
 
 > **Desafio de Projeto:** Evolução de uma API de controle de orçamento com Inteligência Artificial (Spring AI), desenvolvido como entrega final do bootcamp de Java e IA da DIO em parceria com o Itaú.
 
@@ -7,9 +9,15 @@ Fugindo das tradicionais validações de CRUD, implementei um módulo analítico
 
 1. **Detecção de Anomalias (Outliers):** Usando Média e Desvio Padrão (`DetectAnomaliesUseCase`), o Spring AI agora é capaz de analisar o histórico e alertar o usuário sobre gastos que fogem do seu padrão estatístico.
 2. **Projeção de Burn Rate:** O assistente calcula a média diária de gastos (`CalculateBurnRateUseCase`) e projeta o fechamento do mês, avisando se o orçamento está "Acelerado" ou "Estável".
-3. **Pipeline de Exportação de Dados:** Um gerador de *Dataset* (`ExportAnalyticsUseCase`) que enriquece as transações com colunas calculadas e exporta em formato CSV para integração com ferramentas de BI.
+3. **Refatoração do Controller & Novo Endpoint de Texto:** Criação do endpoint `POST /transactions/chat` para permitir a comunicação via texto (JSON) com a IA, facilitando testes e integrações sem a obrigatoriedade de envio de arquivos de áudio (MultipartFile).
+4. **Ambiente de Testes (REST Client):** Criação do arquivo `teste.http` na raiz do projeto, permitindo testar os Casos de Uso diretamente pelo VS Code de forma rápida e documentada.
 
-Para testar, basta acionar a IA (via áudio ou texto) com perguntas como: *"Tem alguma anomalia nos meus gastos?"* ou *"Como está o meu ritmo de despesas?"*.
+## 🛠️ Como rodar o projeto localmente
+1. Clone o repositório.
+2. Acesse o arquivo `src/main/resources/application.properties` e insira a sua chave de API (OpenAI ou compatível):
+   `spring.ai.openai.api-key=SUA_CHAVE_AQUI`
+3. Rode o comando `./gradlew bootRun`.
+4. Utilize o arquivo `teste.http` para enviar mensagens para a IA!
 ---
 *Abaixo estão as instruções originais de arquitetura e execução fornecidas na base do projeto.*
 
